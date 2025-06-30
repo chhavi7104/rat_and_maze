@@ -1,0 +1,371 @@
+    :root {
+      --sky-blue: #A7E0FF;
+      --soft-mint: #B5F2D8;
+      --warm-yellow: #FFE8A3;
+      --coral-pink: #FFB8B8;
+      --lavender: #D4C4FB;
+      --deep-teal: #7aeaec;
+      --light-gray: #F8F9FA;
+      --dark-text: #2B2D42;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+       --solution-path: #B388FF; /* Bright pastel purple */
+  --solution-highlight: #E1BEE7; /* Lighter purple for highlights */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', 'Comic Sans MS', sans-serif;
+      background: linear-gradient(135deg, var(--sky-blue), var(--soft-mint));
+      color: var(--dark-text);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      touch-action: manipulation;
+    }
+
+    #header {
+      padding: 1rem;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      z-index: 10;
+    }
+
+    h1 {
+      color: var(--deep-teal);
+      font-size: 2.2rem;
+      text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.5rem;
+    }
+
+    #game-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      overflow: auto;
+    }
+
+    #player-info {
+      display: flex;
+      justify-content: space-around;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50px;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .info-box {
+      text-align: center;
+    }
+
+    .info-box h3 {
+      font-size: 0.9rem;
+      color: var(--deep-teal);
+    }
+
+    .info-box p {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+  #maze-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  margin: 0 1rem;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#maze-container {
+  display: grid;
+  grid-template-columns: repeat(var(--maze-size), 1fr);
+  width: 100%;
+  max-width: 90vmin;
+  aspect-ratio: 1 / 1;
+  border: 1px solid #aaa;
+  position: relative;
+  background-color: white;
+}
+
+.cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+.path {
+  background-color: #ffffff; /* Pure white for maximum contrast */
+  box-shadow: 
+    inset 0 0 8px rgba(200, 230, 255, 0.8), /* Light blue inner glow */
+    0 0 3px rgba(100, 150, 200, 0.3); /* Subtle outer shadow */
+  border: 1px solid rgba(220, 240, 255, 0.5); /* Very light border */
+}
+
+.wall {
+  background-color: #3a7a7c; /* Darker teal for better contrast */
+  box-shadow: 
+    inset 0 0 12px rgba(0, 0, 0, 0.5), /* Strong inner shadow */
+    0 0 5px rgba(0, 0, 0, 0.3); /* Outer shadow */
+  border: 1px solid rgba(0, 0, 0, 0.3); /* Dark border */
+}
+
+.solution {
+  background-color: #9c64ff; /* Bright purple */
+  opacity: 0.9;
+  box-shadow: 
+    inset 0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 15px rgba(156, 100, 255, 0.7);
+  z-index: 3;
+  animation: pulse-path 1.2s infinite alternate;
+}
+
+.start {
+  background-color: #7fffd4; /* Bright aquamarine */
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 15px rgba(127, 255, 212, 0.7);
+}
+
+.end {
+  background-color: #ff7f7f; /* Light coral */
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 15px rgba(255, 127, 127, 0.7);
+}
+@keyframes pulse-path {
+  0% { 
+    background-color: #9370db;
+    box-shadow: 
+      inset 0 0 15px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(147, 112, 219, 0.6);
+  }
+  100% { 
+    background-color: #b19cd9;
+    box-shadow: 
+      inset 0 0 20px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(147, 112, 219, 0.8);
+  }
+}
+
+    #rat {
+     position: absolute;
+  width: 80%;
+  height: 80%;
+  background-image: url('—Pngtree—3d\ cartoon\ rat\ running\ illustration_9174608.png'); /* path to your image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+    }
+
+   
+
+    #cheese {
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      background-color: var(--warm-yellow);
+      border-radius: 15% 15% 50% 50%;
+      z-index: 5;
+      top: 10%;
+      left: 10%;
+      transform: rotate(45deg);
+      box-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.2),
+        inset 0 0 10px rgba(255, 232, 163, 0.5);
+      animation: shimmer 3s infinite;
+      border: 2px solid #FFD166;
+    }
+
+    #cheese::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 60%),
+        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%);
+      border-radius: inherit;
+    }
+
+    #controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      margin-top: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    button, select, input {
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 50px;
+      background-color: var(--deep-teal);
+      color: white;
+      font-family: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    button:hover, select:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    input {
+      background-color: white;
+      color: var(--dark-text);
+      min-width: 120px;
+    }
+
+    #level-complete {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      text-align: center;
+      display: none;
+      max-width: 90%;
+      width: 400px;
+      animation: fadeIn 0.5s ease-out;
+      border-top: 8px solid var(--soft-mint);
+    }
+
+    #level-complete h2 {
+      color: var(--deep-teal);
+      margin-bottom: 1rem;
+    }
+
+    #level-complete button {
+      margin-top: 1.5rem;
+      background-color: var(--coral-pink);
+      padding: 0.8rem 1.5rem;
+    }
+    @keyframes pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      #player-info {
+        padding: 0.6rem;
+      }
+      
+      .info-box h3 {
+        font-size: 0.8rem;
+      }
+      
+      .info-box p {
+        font-size: 1rem;
+      }
+      
+      button, select, input {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (orientation: portrait) {
+      #game-container {
+        flex-direction: column;
+      }
+      
+      #maze-wrapper {
+        width: 100%;
+        height: 60vh;
+      }
+    }
+
+    @media (orientation: landscape) {
+      #maze-wrapper {
+        width: 70vh;
+        margin: 0 auto;
+      }
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.9; filter: brightness(1); }
+      50% { opacity: 1; filter: brightness(1.1); }
+      100% { opacity: 0.9; filter: brightness(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -55%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    /* Touch controls for mobile */
+    #touch-controls {
+      display: none;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 5px;
+      width: 150px;
+      height: 150px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .touch-btn {
+      background-color: rgba(45, 149, 150, 0.7);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+
+    .touch-btn:active {
+      background-color: rgba(45, 149, 150, 1);
+    }
+
+    #up-btn { grid-column: 2; grid-row: 1; }
+    #left-btn { grid-column: 1; grid-row: 2; }
+    #down-btn { grid-column: 2; grid-row: 3; }
+    #right-btn { grid-column: 3; grid-row: 2; }
+
+    @media (hover: none) {
+      #touch-controls {
+        display: grid;
+      }
+    }

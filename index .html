@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rat Adventure Maze</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="header">
+    <h1>Rat Adventure Maze</h1>
+  </div>
+  
+  <div id="game-container">
+    <div id="player-info">
+      <div class="info-box">
+        <h3>Player</h3>
+        <p id="player-name">Guest</p>
+      </div>
+      <div class="info-box">
+        <h3>Level</h3>
+        <p id="current-level">1</p>
+      </div>
+      <div class="info-box">
+        <h3>Score</h3>
+        <p id="current-score">0</p>
+      </div>
+      <div class="info-box">
+        <h3>Time</h3>
+        <p id="current-time">0s</p>
+      </div>
+    </div>
+    
+    <div id="maze-wrapper">
+      <div id="maze-container"></div>
+    </div>
+    
+    <div id="controls">
+      <div>
+        <label for="player">Name:</label>
+        <input type="text" id="player" placeholder="Your name">
+      </div>
+      <div>
+        <label for="level">Level:</label>
+        <select id="level">
+          <option value="1">1 - Beginner</option>
+          <option value="2">2 - Easy</option>
+          <option value="3">3 - Medium</option>
+          <option value="4">4 - Hard</option>
+          <option value="5">5 - Expert</option>
+        </select>
+      </div>
+      <button id="generate">New Maze</button>
+      <button id="solve">Show Solution</button>
+      <button id="reset">Reset Rat</button>
+    </div>
+  </div>
+  
+  <div id="touch-controls">
+    <div id="up-btn" class="touch-btn">↑</div>
+    <div id="left-btn" class="touch-btn">←</div>
+    <div id="down-btn" class="touch-btn">↓</div>
+    <div id="right-btn" class="touch-btn">→</div>
+  </div>
+  
+  <div id="level-complete">
+    <h2>Level Complete!</h2>
+    <p>You found the cheese in <span id="complete-time">0</span> seconds!</p>
+    <p>You earned <span id="complete-score">0</span> points!</p>
+    <button id="next-level">Next Level</button>
+  </div>
+
+  <script src="script.js"></script>
+   
+   
+ 
+</body>
+</html>
