@@ -24,7 +24,10 @@ A visual simulation of the classic "Rat in a Maze" problem, built using **HTML**
 ---
 
 ## 🚀 Getting Started
-### visit website
+
+### Visit Website
+https://chhavi7104.github.io/rat_and_maze/
+
 ### Clone the repository
 
 ```bash
