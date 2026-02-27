@@ -1,5 +1,6 @@
 # 🐭 Rat in a Maze Solver
 
+
 A visual simulation of the classic "Rat in a Maze" problem, built using **HTML**, **CSS**, and **JavaScript**. The algorithm explores all possible paths from the top-left corner to the bottom-right corner of a grid-based maze.
 
 ---
